@@ -14883,7 +14883,7 @@ $$</p>
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -14930,7 +14930,7 @@ b) Mittlere Geschwindigkeiten
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15359,7 +15359,7 @@ $$</p>
 </div>
 </div>
 </div>
-</div><div class="fragment">
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15381,7 +15381,7 @@ $$</p>
 </div>
 </div>
 </div>
-</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15418,7 +15418,7 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a) Abhängigkeit vom Volumen (n=10000)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -15429,8 +15429,52 @@ $$</p>
     <span class="n">q2</span> <span class="o">=</span> <span class="n">q_int</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
     <span class="n">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">q2</span> <span class="o">-</span> <span class="n">q1</span><span class="p">)</span> <span class="o">/</span> <span class="n">q1</span> <span class="o">*</span> <span class="mi">100</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;volume [A^3]: </span><span class="si">{</span><span class="n">a</span><span class="o">**</span><span class="mi">3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> q(sum): </span><span class="si">{</span><span class="n">q1</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> q(int): </span><span class="si">{</span><span class="n">q2</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> error: </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+</pre></div>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Abhängigkeit von n (Volumen=1 cm^3)&quot;</span><span class="p">)</span>    
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>a) Abhängigkeit vom Volumen (n=10000)
+
+volume [A^3]: 0.06 	 q(sum): 1.05021 	 q(int): 0.43445 	 error: -58.6 %
+volume [A^3]: 0.51 	 q(sum): 2.91783 	 q(int): 3.47558 	 error: 19.1 %
+volume [A^3]: 3.38 	 q(sum): 17.16309 	 q(int): 22.91035 	 error: 33.5 %
+volume [A^3]: 27.00 	 q(sum): 149.55022 	 q(int): 183.28277 	 error: 22.6 %
+volume [A^3]: 1728.00 	 q(sum): 11022.81763 	 q(int): 11730.09705 	 error: 6.4 %
+volume [A^3]: 3375.00 	 q(sum): 21785.07992 	 q(int): 22910.34581 	 error: 5.2 %
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Abhängigkeit von n (Volumen=1 cm^3)&quot;</span><span class="p">)</span>    
 <span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">centi</span>
 <span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">,</span> <span class="mf">1e7</span><span class="p">,</span> <span class="mf">1e8</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
@@ -15460,23 +15504,15 @@ $$</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>a) Abhängigkeit vom Volumen (n=10000)
-
-volume [A^3]: 0.06 	 q(sum): 1.07141 	 q(int): 0.49547 	 error: -53.8 %
-volume [A^3]: 0.51 	 q(sum): 3.25055 	 q(int): 3.96377 	 error: 21.9 %
-volume [A^3]: 3.38 	 q(sum): 19.62963 	 q(int): 26.12836 	 error: 33.1 %
-volume [A^3]: 27.00 	 q(sum): 171.62724 	 q(int): 209.02684 	 error: 21.8 %
-volume [A^3]: 1728.00 	 q(sum): 12602.67656 	 q(int): 13377.71782 	 error: 6.1 %
-volume [A^3]: 3375.00 	 q(sum): 24896.22953 	 q(int): 26128.35512 	 error: 4.9 %
-
+<pre>
  Abhängigkeit von n (Volumen=1 cm^3)
-n_max: 1.00e+00 	 q(sum): 1.00e+00 	 q(int): 7.74e+24 	 error: 7.74e+26 %
-n_max: 1.00e+03 	 q(sum): 1.00e+09 	 q(int): 7.74e+24 	 error: 7.74e+17 %
-n_max: 1.00e+05 	 q(sum): 1.00e+15 	 q(int): 7.74e+24 	 error: 7.74e+11 %
-n_max: 1.00e+06 	 q(sum): 1.00e+18 	 q(int): 7.74e+24 	 error: 7.74e+08 %
-n_max: 1.00e+07 	 q(sum): 9.98e+20 	 q(int): 7.74e+24 	 error: 7.76e+05 %
-n_max: 1.00e+08 	 q(sum): 8.23e+23 	 q(int): 7.74e+24 	 error: 8.41e+02 %
-n_max: 1.00e+09 	 q(sum): 7.74e+24 	 q(int): 7.74e+24 	 error: 1.15e-06 %
+n_max: 1.00e+00 	 q(sum): 1.00e+00 	 q(int): 6.79e+24 	 error: 6.79e+26 %
+n_max: 1.00e+03 	 q(sum): 1.00e+09 	 q(int): 6.79e+24 	 error: 6.79e+17 %
+n_max: 1.00e+05 	 q(sum): 1.00e+15 	 q(int): 6.79e+24 	 error: 6.79e+11 %
+n_max: 1.00e+06 	 q(sum): 1.00e+18 	 q(int): 6.79e+24 	 error: 6.79e+08 %
+n_max: 1.00e+07 	 q(sum): 9.98e+20 	 q(int): 6.79e+24 	 error: 6.80e+05 %
+n_max: 1.00e+08 	 q(sum): 8.08e+23 	 q(int): 6.79e+24 	 error: 7.40e+02 %
+n_max: 1.00e+09 	 q(sum): 6.79e+24 	 q(int): 6.79e+24 	 error: 1.19e-06 %
 </pre>
 </div>
 </div>
@@ -15497,12 +15533,12 @@ n_max: 1.00e+09 	 q(sum): 7.74e+24 	 q(int): 7.74e+24 	 error: 1.15e-06 %
 </div>
 </div>
 </div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Beiträge einzelner Translationszustände&quot;</span><span class="p">)</span>
@@ -15537,6 +15573,13 @@ n_max: 1.00e+09 	 q(sum): 7.74e+24 	 q(int): 7.74e+24 	 error: 1.15e-06 %
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
  Beiträge einzelner Translationszustände
+n: 1.00e+00 	 contribution: 4.02e-05
+n: 1.00e+03 	 contribution: 4.02e-05
+n: 1.00e+05 	 contribution: 4.02e-05
+n: 1.00e+06 	 contribution: 4.02e-05
+n: 1.00e+07 	 contribution: 3.99e-05
+n: 1.00e+08 	 contribution: 2.20e-05
+n: 1.00e+09 	 contribution: 2.86e-31
 </pre>
 </div>
 </div>
@@ -15545,7 +15588,7 @@ n_max: 1.00e+09 	 q(sum): 7.74e+24 	 q(int): 7.74e+24 	 error: 1.15e-06 %
 
 </div>
 
-</div></div></section></section><section><section>
+</div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15576,12 +15619,12 @@ $$
 </div>
 </div>
 </div>
-</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">hbar</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">angstrom</span>
@@ -15608,8 +15651,47 @@ $$
 
 <span class="k">def</span> <span class="nf">q_rot_int</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">k</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Abhängigkeit von der Temperatur:&quot;</span><span class="p">)</span>
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>mu: 	 1.65e-27 kg
+I: 	 4.27e-47 kg m^2
+B: 	 6.56e+02 m^-1
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Abhängigkeit von der Temperatur:&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">273</span><span class="p">]:</span>
     <span class="c1"># 0 is ill-defined because of beta</span>
     <span class="n">q1</span> <span class="o">=</span> <span class="n">q_rot_sum</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
@@ -15625,6 +15707,39 @@ $$
      </div>
 </div>
 </div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
+Abhängigkeit von der Temperatur:
+Temperatur: 1 K 	 q(sum): 1.00e+00 	 q(int): 1.06e-01 	 error: -89.4095 %
+Temperatur: 10 K 	 q(sum): 1.47e+00 	 q(int): 1.06e+00 	 error: -28.0197 %
+Temperatur: 50 K 	 q(sum): 5.64e+00 	 q(int): 5.30e+00 	 error: -6.1400 %
+Temperatur: 100 K 	 q(sum): 1.09e+01 	 q(int): 1.06e+01 	 error: -3.1083 %
+Temperatur: 273 K 	 q(sum): 2.92e+01 	 q(int): 2.89e+01 	 error: -1.1476 %
+
+Die charakteristische Rotationstemperatur ist 9.45 K.
+Ab etwa dem fünffachen diesen Wertes (50 K) ist der Fehler durch die Integration unter 6 %
+und in einer akzeptablen Größenordnung.
+</pre>
+</div>
+</div>
+
+</div>
+
 </div>
 
 </div></section></section>
