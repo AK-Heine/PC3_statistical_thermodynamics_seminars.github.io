@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>Seminar_3 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Seminar_4 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -14658,8 +14658,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="1.-Effusion">1. Effusion<a class="anchor-link" href="#1.-Effusion">&#182;</a></h1><p>In einem abgeschlossenen Behälter mit insgesamt 100 cm$^2$ Innenwandfläche befindet sich Xenon bei 380 K unter einem Druck von 1.12 bar.</p>
-<p>a) Berechnen Sie mit welcher Frequenz die Xe-Atome (Molmasse 131.29 g/mol) auf die Wand stoßen.</p>
+<h1 id="1.-Molare-Entropie">1. Molare Entropie<a class="anchor-link" href="#1.-Molare-Entropie">&#182;</a></h1><p>Berechnen Sie die molare Entropie von ClO$_2$ bei Raumtemperatur. Die Bindungslänge einer ClO-Bindung im ClO$_2$-Molekül beträgt 149 pm. Der O–Cl–O-Winkel ist 118.5°. Das Molekül besitzt die Punktgruppe C$_{2v}$ und einen zweifach entarteten elektronischen Grundzustand. Nehmen Sie für die Berechnung an, dass Sie bei der betrachteten Temperatur den Beitrag der Schwingungen sowie den der elektronisch angeregten Zustände vernachlässigen können. Behandeln Sie ClO$_2$ zudem als starren Rotator.</p>
 
 </div>
 </div>
@@ -14671,16 +14670,33 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Annahmen:</p>
 $$
 \begin{aligned}
-z_{A} &amp;=\frac{\text { Zahl der Wandstöße }}{\Delta t} \\
-&amp;=\frac{N}{V} \frac{A\left\langle\left|c_{z}\right|\right\rangle \Delta t}{\Delta t} \\
-&amp;=\frac{N A}{V} \frac{k T}{2 \pi m}^{1 / 2} \\
-&amp;=\frac{N A}{V} \frac{\bar{c}}{4} \\
-&amp;=\frac{p A}{(2 \pi m k T)^{1 / 2}} \\
-z_{A} &amp;= \frac{p A}{(2 \pi \frac{M}{N_A} k T)^{1 / 2}}
+q_{tot} &amp;= q_{trans} \cdot q_{rot} \cdot q_{el} \\
+q_{vib} &amp;= q_{el} = 1 \\
+S &amp;= S_{trans} + S_{rot} + S_{el}
 \end{aligned}
 $$
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Die Sackur-Tetrode-Gleichung beschreib die Entropy eines monoatomaren Gases und ist eine gute Näherung für die Translationsentropie:</p>
+$$
+S_{\text {trans }}=R \ln \left(\left(\frac{2 \pi m k T}{h^{2}}\right)^{3 / 2} \frac{e^{5 / 2} V}{N_A}\right)
+$$<ul>
+<li>$R$ ist die molare Gaskonstante</li>
+<li>$e$ ist die Euler'sche Zahl</li>
+<li>$V$ ist das molare Volumen 22.465 l/mol</li>
+</ul>
+
 </div>
 </div>
 </div>
@@ -14689,20 +14705,19 @@ $$
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[16]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[61]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">bar</span><span class="p">,</span> <span class="n">N_A</span><span class="p">,</span> <span class="n">k</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">N_A</span>
 <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
 
-<span class="c1"># Tipp: Immer zu SI Einheiten konvertieren</span>
-<span class="n">p</span> <span class="o">=</span> <span class="mf">1.12</span> <span class="o">*</span> <span class="n">bar</span>          <span class="c1"># Pascal</span>
-<span class="n">A</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="mf">1e-4</span>          <span class="c1"># m^2</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mf">131.29</span> <span class="o">*</span> <span class="mf">1e-3</span>       <span class="c1"># kg/mol</span>
-<span class="n">T</span> <span class="o">=</span> <span class="mi">380</span>                 <span class="c1"># K</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span> 
+<span class="n">V</span> <span class="o">=</span> <span class="mf">22.465</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="c1"># m^3 / mol</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="mf">35.453</span> <span class="o">+</span> <span class="mf">15.999</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="c1"># kg/mol</span>
+<span class="n">S_trans</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">m</span><span class="o">/</span><span class="n">N_A</span><span class="p">)</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span> <span class="o">/</span> <span class="n">N_A</span> <span class="p">)</span>
 
-<span class="n">z_A</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">A</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">M</span> <span class="o">/</span> <span class="n">N_A</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># s</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die Xenon-Atome stoßen mit einer Frequenz von </span><span class="si">{</span><span class="n">z_A</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> s-1 auf die Wand.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die molare Translationsentropy ist </span><span class="si">{</span><span class="n">S_trans</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> J/(mol * K).&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14724,7 +14739,7 @@ $$
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Die Xenon-Atome stoßen mit einer Frequenz von 1.32e+25 s-1 auf die Wand.
+<pre>Die molare Translationsentropy ist 160.554 J/(mol * K).
 </pre>
 </div>
 </div>
@@ -14733,80 +14748,6 @@ $$
 
 </div>
 
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>b) Welches Gas stößt mit etwa der doppelten Frequenz an die Wände?</p>
-$$
-\begin{aligned}
-z_{B} &amp;= 2 z_{A} \\
-2 z_{A} &amp;= \frac{p A}{(2 \pi \frac{M'}{N_A} k T)^{1 / 2}} \\ 
-\frac{p A}{2 z_{A}} &amp;= (2 \pi \frac{M'}{N_A} k T)^{1 / 2} \\ 
-M' &amp;= \frac{p^2 A^2 N_A}{8 \pi z_{A}^2 k T}
-\end{aligned}
-$$
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[17]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">M_prime</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">A</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">N_A</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">z_A</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
-<span class="n">M_prime</span> <span class="o">*=</span> <span class="mf">1e3</span> <span class="c1"># g/mol</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ein Gas mit der Molmasse </span><span class="si">{</span><span class="n">M_prime</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> g/mol stößt mit doppelter Frequenz auf die Wand.&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dabei handelt es sich um Sauerstoff O_2. Schwefel ist bei 380 K noch flüssig.&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Ein Gas mit der Molmasse 32.82 g/mol stößt mit doppelter Frequenz auf die Wand.
-Dabei handelt es sich um Sauerstoff O_2. Schwefel ist bei 380 K noch flüssig.
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="2.-Kinetische-Gastheorie">2. Kinetische Gastheorie<a class="anchor-link" href="#2.-Kinetische-Gastheorie">&#182;</a></h1><p>Wie groß ist (a) die quadratisch gemittelte Geschwindigkeit und (b) die mittlere Geschwindigkeit von CO2-Molekülen bei 25°C und 100°C? Ermitteln Sie (c) die mittlere freie Weglänge von CO2-Molekülen bei 25°C und 1 bar bzw. 10$^{–7}$ bar. Der Durchmesser eines CO2-Moleküls beträgt 0,26 nm. Nehmen Sie ideales Verhalten an. (d) Welche Änderung der mittleren freien Weglänge erwarten Sie bei Temperaturerhöhung? Begründen Sie Ihre Antwort.</p>
-
-</div>
-</div>
-</div>
 </div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -14814,18 +14755,18 @@ Dabei handelt es sich um Sauerstoff O_2. Schwefel ist bei 380 K noch flüssig.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>a) Quadratisch gemittelte Geschwindigkeiten:
+<p>Für die molare Rotationsentropy gilt folgender Zusammenhang:</p>
 $$
-w_{RMS} = \sqrt{\lt w^2 \gt} = \sqrt{\frac{3 R T}{M}}
-$$</p>
-<p>b) Mittlere Geschwindigkeit:
+S_{\text {rot }}=R \ln \left(\sqrt{\frac{\pi T^{3}}{\theta_{x} \theta_{y} \theta_{z}}} \frac{e^{3 / 2}}{\sigma}\right)
+$$<p>Mit der Symmetryzahl $\sigma$ folgend aus der Drehzähligkeit. Hierbei sind $\theta_{i}$ charakteristische Rotationstemperaturen, die sich anhand der Trägheitskomponenten berechnen lassen:
 $$
-\lt w \gt = \sqrt{\frac{8 RT}{ \pi M}}
+\theta_{i}=\frac{h^{2}}{8 \pi^{2} I_{i} k}
 $$</p>
-<p>c) Mittlere freie Weglänge:
+<p>Mit dem Trägheitsmoment:
 $$
-\lambda = \frac{1}{\sqrt{2} \pi d^2}\frac{V}{N_A} = \frac{1}{\sqrt{2} \pi d^2} \frac{RT}{pN_A}
+I_i = \sum_i m_i r_i^2
 $$</p>
+<p>Gegeben war der Cl-O Bindungsabstand von $r=149~pm$ und der Bindungswinkel von $118.5 °$. Daraus lassen sich die Koordinaten bestimmen, wobei wir Cl in den Ursprung legen.</p>
 
 </div>
 </div>
@@ -14835,22 +14776,27 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[62]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">R</span><span class="p">,</span> <span class="n">nano</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">pico</span>
+<span class="kn">from</span> <span class="nn">ase.atoms</span> <span class="kn">import</span> <span class="n">Atoms</span>
+<span class="kn">from</span> <span class="nn">ase.visualize</span> <span class="kn">import</span> <span class="n">view</span>
 
-<span class="c1">#a)</span>
-<span class="n">T1</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">+</span> <span class="mf">273.15</span> <span class="c1"># K</span>
-<span class="n">T2</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mf">273.15</span> <span class="c1"># K</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">44</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="c1"># kg/mol</span>
-<span class="n">w1_RMS</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T1</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span> <span class="c1"># m/s</span>
-<span class="n">w2_RMS</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T2</span> <span class="o">/</span> <span class="n">M</span><span class="p">)</span> <span class="c1"># m/s</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a) Quadratisch gemittelte Geschwindigkeiten&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;25°C:  </span><span class="si">{</span><span class="n">w1_RMS</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;100°C: </span><span class="si">{</span><span class="n">w2_RMS</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
+<span class="c1"># first we calculate the coordinates</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mf">118.5</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="n">r_O1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">149</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">pico</span>
+<span class="n">R_z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span>  <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
+                <span class="p">[</span>         <span class="mi">0</span><span class="p">,</span>           <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">r_O2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">R_z</span><span class="p">,</span> <span class="n">r_O1</span><span class="p">)</span>
+<span class="n">r_Cl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r_Cl</span><span class="p">,</span> <span class="n">r_O1</span><span class="p">,</span> <span class="n">r_O2</span><span class="p">])</span>
+<span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cl&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">positions</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{:.3e}</span><span class="s2"> </span><span class="si">{:.3e}</span><span class="s2"> </span><span class="si">{:.3e}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">p</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -14872,9 +14818,9 @@ $$</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>a) Quadratisch gemittelte Geschwindigkeiten
-25°C:  411.12 m/s
-100°C: 459.93 m/s
+<pre>Cl 0.000e+00 0.000e+00 0.000e+00
+O 1.490e-10 0.000e+00 0.000e+00
+O -7.110e-11 1.309e-10 0.000e+00
 </pre>
 </div>
 </div>
@@ -14883,529 +14829,38 @@ $$</p>
 
 </div>
 
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#b)</span>
-<span class="n">w1</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T1</span> <span class="o">/</span> <span class="p">(</span><span class="n">pi</span> <span class="o">*</span> <span class="n">M</span><span class="p">))</span> <span class="c1"># m/s</span>
-<span class="n">w2</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T2</span> <span class="o">/</span> <span class="p">(</span><span class="n">pi</span> <span class="o">*</span> <span class="n">M</span><span class="p">))</span> <span class="c1"># m/s</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">b) Mittlere Geschwindigkeiten&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;25°C:  </span><span class="si">{</span><span class="n">w1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;100°C: </span><span class="si">{</span><span class="n">w2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
-b) Mittlere Geschwindigkeiten
-25°C:  378.77 m/s
-100°C: 423.74 m/s
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#c)</span>
-<span class="n">d</span> <span class="o">=</span> <span class="mf">0.26</span> <span class="o">*</span> <span class="n">nano</span>
-<span class="n">p1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">bar</span>
-<span class="n">p2</span> <span class="o">=</span> <span class="mf">1e-7</span> <span class="o">*</span> <span class="n">bar</span>
-<span class="n">lambda1</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p1</span> <span class="o">*</span> <span class="n">N_A</span><span class="p">)</span>
-<span class="n">lambda2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p2</span> <span class="o">*</span> <span class="n">N_A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">c) Mittlere freie Weglänge&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1 bar:    </span><span class="si">{</span><span class="n">lambda1</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1e-7 bar: </span><span class="si">{</span><span class="n">lambda2</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">d) Temperaturerhöhung führt zu einer Vergrößerung der mittleren freien Weglänge, da höhere Teilchengeschwindigkeiten die Stoßhäufigkeit vermindern.&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span>
-   <span class="sa">rf</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">$\lambda \propto T$</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">))</span>
-<span class="n">lambda3</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">d</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">R</span><span class="o">*</span><span class="n">T2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">p2</span> <span class="o">*</span> <span class="n">N_A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Beispiel: 1 bar bei 100°C: </span><span class="si">{</span><span class="n">lambda3</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> m/s&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
-c) Mittlere freie Weglänge
-1 bar:    1.37e-07 m/s
-1e-7 bar: 1.37e+00 m/s
-
-d) Temperaturerhöhung führt zu einer Vergrößerung der mittleren freien Weglänge, da höhere Teilchengeschwindigkeiten die Stoßhäufigkeit vermindern.
-</pre>
-</div>
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output " data-mime-type="text/markdown">
-<p>$\lambda \propto T$</p>
-
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Beispiel: 1 bar bei 100°C: 1.72e+00 m/s
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="3.-Kombinatorik">3. Kombinatorik<a class="anchor-link" href="#3.-Kombinatorik">&#182;</a></h1><p>Auf wie viele verschiedene Möglichkeiten kann man zwei durch ihr Aussehen unterscheidbare Bälle auf drei Behälter verteilen?</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Variation mit Wiederholung:
-Jedes $k$te Objekt hat $n$ Möglichkeiten.
-$$
-V_n^{(k)} = n^k = 3^2 = 9
-$$</p>
-
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="4.-Boltzmann-Verteilung">4. Boltzmann-Verteilung<a class="anchor-link" href="#4.-Boltzmann-Verteilung">&#182;</a></h1><p>Ein System bestehe aus 20 Molekülen, die in 21 verschiedenen Energiezuständen ($\varepsilon_{0}$ bis $\varepsilon_{20}$) vorliegen können. Die Energie eines Zustandes sei $\varepsilon_i = i ⋅ \varepsilon_1 $, die Gesamtenergie betrage 20 $\varepsilon_1$. Wie groß ist das statistische Gewicht des Makrozustandes (a), in dem sich alle Teilchen im Zustand $\varepsilon_{1}$ befinden?</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Statistisches Gewicht:
-$$
-W = \frac{N!}{n_0 ! \cdot n_1 ! \cdot ... \cdot n_{20} !}
-$$</p>
-<p>a) Makrozustand $\{0, 20, 0, ..., 0\}$</p>
-<p>Alle Teilchen befinden sich in $\varepsilon_1$.</p>
-$$
-W_a = \frac{20!}{0 ! \cdot 20! \cdot ... \cdot 0 !} = 1
-$$
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>b) Der Zustand (b) gehe aus (a) daraus hervor, dass ein Teilchen von $\varepsilon_{1}$ nach $\varepsilon_{0}$ geht. Welche weiteren Folgen hat das, wie groß ist das statistische Gewicht dieses Zustandes?</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>b) Makrozustand $\{1, 18, 1, ..., 0\}$</p>
-<p>Ein Teilchen geht nach $\varepsilon_0$. In Folge dessen geht ein Teilchen aus $1$ nach $2$, um die Gesamtenergie zu erhalten.</p>
-$$
-W_b = \frac{20!}{1 ! \cdot 18! \cdot 1 ! \cdot ... \cdot 0 !} = 380
-$$
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>c) Wie groß ist das statistische Gewicht des Makrozustandes (c), bei dem 7 Teilchen nach $\varepsilon_{0}$, je eines nach $\varepsilon_{3}$ und $\varepsilon_{4}$, und zwei nach $\varepsilon_{2}$ gegangen sind?</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>c) Makrozustand $\{7, 9, 2, 1, 1, ..., 0\}$</p>
-$$
-W_c = \frac{20!}{7 ! \cdot 9! \cdot 2 ! \cdot 1 ! \cdot 1 !} = 665121600
-$$
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>d) Ein System bestehe aus zwei Teilchen A und B, die in vier verschiedenen Energiezuständen $\varepsilon_0=0$, $\varepsilon_1$, $\varepsilon_2=2\varepsilon_1$ und $\varepsilon_3=3\varepsilon_1$ vorliegen können. Die Gesamtenergie betrage $3 \varepsilon_1$. Wie viele Makrozustände gibt es für dieses System, durch welche Mikrozustände werden sie realisiert, welches statistische Gewicht haben sie?</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Durch die Gesamtenergie sind nur zwei Makrozustände möglich, nämlich $\{1,0,0,1 \}$ und $\{0,1,1,0\}$. Beide haben ein statistisches Gewicht von 2 und sind auf die Arten A/B oder B/A realisierbar.</p>
-
-</div>
-</div>
-</div>
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>e) Welche Energie hat ein Zustand 2, dessen Besetzung bei 300 K nur ein Viertel der Besetzung eines Zustandes 1 ($\varepsilon_1 = 1.000 ⋅ 10^{−21}~J$) ausmacht, wenn das System der Boltzmann-Verteilung gehorcht?</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Boltzmann-Verteilung:
-$$
-p_i = \frac{e^{-\beta \varepsilon_i}}{\sum_j e^{-\beta \varepsilon_j}}
-$$</p>
-<p>Der Zustand 2 soll die Wahrscheinlichkeit von $0.25\cdot p_1$ haben:
-$$
-\begin{aligned}
-p_2 &amp;= \frac{e^{-\beta \varepsilon_2}}{e^{-\beta \varepsilon_1} + e^{-\beta \varepsilon_2}} \\
-&amp;= 0.25 \cdot p_1 = 0.25 \cdot \frac{e^{-\beta \varepsilon_1}}{e^{-\beta \varepsilon_1} + e^{-\beta \varepsilon_2}}
-\end{aligned}
-$$</p>
-
-</div>
-</div>
-</div>
-</div></div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Das können wir nach $\varepsilon_2$ umstellen:
-$$
-\begin{aligned}
-\frac{e^{-\beta \varepsilon_2}}{e^{-\beta \varepsilon_1} + e^{-\beta \varepsilon_2}}
-&amp;= 0.25 \cdot \frac{e^{-\beta \varepsilon_1}}{e^{-\beta \varepsilon_1} + e^{-\beta \varepsilon_2}} \\
-e^{-\beta \varepsilon_2} &amp;= 0.25 \cdot e^{-\beta \varepsilon_1} \\
--\beta \varepsilon_2 &amp;= \ln(0.25) - \beta \varepsilon_1 \\
-\varepsilon_2 &amp;= \frac{\ln(0.25)}{-\beta} + \varepsilon_1 
-\end{aligned}
-$$</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">log</span> <span class="k">as</span> <span class="n">ln</span>
-
-<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
-<span class="n">epsilon_1</span> <span class="o">=</span> <span class="mf">1e-21</span> <span class="c1"># J</span>
-<span class="n">epsilon_2</span> <span class="o">=</span> <span class="n">ln</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="p">)</span> <span class="o">+</span> <span class="n">epsilon_1</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die Energie des Zustandes 2 ist </span><span class="si">{</span><span class="n">epsilon_2</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> J.&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Die Energie des Zustandes 2 ist 6.74e-21 J.
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>f) Ein System, das der Boltzmann-Statistik gehorcht, bestehe aus Teilchen, die in Energiezuständen vorliegen können, welche ein ganzzahliges Vielfaches einer Energie $\varepsilon$ sind. Wie groß ist $\varepsilon$, wenn sich bei der Temperatur $𝑇 = 500~K$ die Zahlen $n$ der Teilchen, die in aufeinander folgenden Zuständen vorliegen, wie $n_i / n_{i+1} = 1000:1$ verhalten?</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-$$
-n_i = 1000 \cdot n_{i+1}\\
-\varepsilon_i = m \varepsilon ~\forall m \in \mathbb{Z} \\
-\varepsilon_{i+1} = \varepsilon_i + \varepsilon
-$$
-</div>
-</div>
-</div>
-</div></div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Daraus folgt:
-$$
-\begin{aligned}
-\frac{n_1}{N} &amp;= 1000 \cdot \frac{n_{i+1}}{N} \\
-\frac{\exp(-\beta \varepsilon_i)}{\sum_j\exp(-\beta\varepsilon_j)}
-&amp;= 1000 \cdot \frac{\exp(-\beta \varepsilon_{i+1})}{\sum_j\exp(-\beta\varepsilon_j)} \\
-&amp;= 1000 \cdot \frac{\exp(-\beta (\varepsilon_{i} + \varepsilon))}{\sum_j\exp(-\beta\varepsilon_j)} \\
-\exp(-\beta \varepsilon_i) &amp;= 1000 \cdot \exp(-\beta (\varepsilon_{i} + \varepsilon)) \\
-\exp(-\beta \varepsilon_i) &amp;= 1000 \cdot \exp(-\beta \varepsilon_{i})\exp(-\beta \varepsilon) \\
-\exp(-\beta \varepsilon) &amp;= \frac{1}{1000} \\
-\varepsilon &amp;= \frac{1}{-\beta} \ln\left(\frac{1}{1000}\right)
-\end{aligned}
-$$</p>
-
-</div>
-</div>
-</div>
-</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[22]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">500</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
-
-<span class="n">epsilon</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span><span class="p">)</span> <span class="o">*</span> <span class="n">ln</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die Energie ist </span><span class="si">{</span><span class="n">epsilon</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> J.&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Die Energie ist 4.77e-20 J.
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div></div></section></section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="8.-Molekulare-Zustandssumme">8. Molekulare Zustandssumme<a class="anchor-link" href="#8.-Molekulare-Zustandssumme">&#182;</a></h1><p>(a) Ein Heliumatom sei in würfelförmigen Behältern mit den Kantenlängen 0,4 Å, 0,8 Å, 1,5 Å, 3,0 Å und 12,0 Å bei 298 K eingesperrt. Berechnen Sie für diese Fälle die sich ergebende Translationszustandssumme sowohl mit Hilfe der korrekten Summenformel als auch mit Hilfe der angenäherten Integralformel. Vergleichen Sie die erhaltenen Ergebnisse und diskutieren Sie sie im Hinblick auf die Konvergenz. Diskutieren Sie auch die Größe der Behälter relativ zur Größe des Heliumatoms.</p>
-
-</div>
-</div>
-</div>
-</div></section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Molekulare Translationszustandssumme:
-$$
-\begin{gathered}
-q=\sum_{n_{x}=1}^{\infty} \sum_{n_{y}=1}^{\infty} \sum_{n_{z}=1}^{\infty} e^{-\gamma\left(n_{x}^{2}+n_{y}^{2}+n_{z}^{2}-3\right)}=\sum_{n_{x}=1}^{\infty} e^{-\gamma\left(n_{z}^{2}-1\right)} \sum_{n_{y}=1}^{\infty} e^{-\gamma\left(n_{y}^{2}-1\right)} \sum_{n_{z}=1}^{\infty} e^{-\gamma\left(n_{z}^{2}-1\right)}=\left[\sum_{n=1}^{\infty} e^{-\gamma\left(n^{2}-1\right)}\right]^{3} \\
-\text { mit } \gamma=\frac{h^{2}}{8 m k T V^{2 / 3}}
-\end{gathered}
-$$</p>
-<p>Annäherung durch Integration:
-$$
-q_{\text {trans }} \approx\left(\frac{2 \pi m k T}{h^{2}}\right)^{3 / 2} V
-$$</p>
-
-</div>
-</div>
-</div>
 </div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[63]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">angstrom</span><span class="p">,</span> <span class="n">centi</span>
-<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">arange</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># then we setup the calculation of the intertial moment</span>
+<span class="n">m_O</span> <span class="o">=</span> <span class="mf">15.99999</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="o">/</span> <span class="n">N_A</span> 
+<span class="n">m_Cl</span> <span class="o">=</span> <span class="mf">35.453</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="o">/</span> <span class="n">N_A</span>
+<span class="n">masses</span> <span class="o">=</span> <span class="p">[</span><span class="n">m_Cl</span><span class="p">,</span> <span class="n">m_O</span><span class="p">,</span> <span class="n">m_O</span><span class="p">]</span>
+<span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Cl&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">]</span>
+<span class="n">center_of_mass</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span> <span class="n">m_O</span> <span class="o">+</span> <span class="n">m_Cl</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">m_Cl</span> <span class="o">*</span> <span class="n">r_Cl</span> <span class="o">+</span> <span class="n">m_O</span> <span class="o">*</span> <span class="n">r_O1</span> <span class="o">+</span> <span class="n">m_O</span> <span class="o">*</span> <span class="n">r_O2</span> <span class="p">)</span>
+<span class="n">relative_positions</span> <span class="o">=</span> <span class="n">positions</span> <span class="o">-</span> <span class="n">center_of_mass</span>
 
-<span class="n">m</span> <span class="o">=</span> <span class="mf">4.002602</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="o">/</span> <span class="n">N_A</span> <span class="c1"># kg</span>
-<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span>
+<span class="c1"># Initialize elements of the inertial tensor</span>
+<span class="n">I11</span> <span class="o">=</span> <span class="n">I22</span> <span class="o">=</span> <span class="n">I33</span> <span class="o">=</span> <span class="n">I12</span> <span class="o">=</span> <span class="n">I13</span> <span class="o">=</span> <span class="n">I23</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">relative_positions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">masses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">q_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-    <span class="n">V</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span>
-    <span class="n">gamma</span> <span class="o">=</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">T</span> <span class="o">*</span> <span class="n">V</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">n</span><span class="p">:</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">gamma</span> <span class="o">*</span> <span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">q</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="n">n_min</span><span class="p">,</span> <span class="n">n_max</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">q</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">I11</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">I22</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">z</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">I33</span> <span class="o">+=</span> <span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">I12</span> <span class="o">+=</span> <span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+    <span class="n">I13</span> <span class="o">+=</span> <span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="n">z</span>
+    <span class="n">I23</span> <span class="o">+=</span> <span class="o">-</span><span class="n">m</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">z</span>
 
-<span class="k">def</span> <span class="nf">q_int</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
-    <span class="n">V</span> <span class="o">=</span> <span class="n">a</span><span class="o">**</span><span class="mi">3</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">m</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">V</span>
-    <span class="k">return</span> <span class="n">q</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">I11</span><span class="p">,</span> <span class="n">I12</span><span class="p">,</span> <span class="n">I13</span><span class="p">],</span>
+              <span class="p">[</span><span class="n">I12</span><span class="p">,</span> <span class="n">I22</span><span class="p">,</span> <span class="n">I23</span><span class="p">],</span>
+              <span class="p">[</span><span class="n">I13</span><span class="p">,</span> <span class="n">I23</span><span class="p">,</span> <span class="n">I33</span><span class="p">]])</span>
 </pre></div>
 
      </div>
@@ -15418,17 +14873,26 @@ $$</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[64]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a) Abhängigkeit vom Volumen (n=10000)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">lengths</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">12.0</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">lengths</span><span class="p">:</span>
-    <span class="n">l</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">angstrom</span>
-    <span class="n">q1</span> <span class="o">=</span> <span class="n">q_sum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
-    <span class="n">q2</span> <span class="o">=</span> <span class="n">q_int</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">q2</span> <span class="o">-</span> <span class="n">q1</span><span class="p">)</span> <span class="o">/</span> <span class="n">q1</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;volume [A^3]: </span><span class="si">{</span><span class="n">a</span><span class="o">**</span><span class="mi">3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> q(sum): </span><span class="si">{</span><span class="n">q1</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> q(int): </span><span class="si">{</span><span class="n">q2</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> error: </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># obtain the eigenvalues and eigenvectors of the inertial tensor</span>
+<span class="n">evals</span><span class="p">,</span> <span class="n">evecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;Die Komponenten des Trägheitsmoments sind </span>
+<span class="s2">I_x=</span><span class="si">{</span><span class="n">evals</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">I_y=</span><span class="si">{</span><span class="n">evals</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">I_z=</span><span class="si">{</span><span class="n">evals</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> kg m^2.&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">evals</span> <span class="o">*</span> <span class="n">k</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&quot;&quot;Daraus ergeben sich die charakteristischen Rotationstemperaturen</span>
+<span class="s2">theta_x=</span><span class="si">{</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K</span>
+<span class="s2">theta_y=</span><span class="si">{</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K</span>
+<span class="s2">theta_z=</span><span class="si">{</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K.&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">S_rot</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">T</span><span class="o">**</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">theta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">theta</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Man erhält eine Rotationsentropy von </span><span class="si">{</span><span class="n">S_rot</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> J/(mol * K).&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15450,14 +14914,15 @@ $$</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>a) Abhängigkeit vom Volumen (n=10000)
-
-volume [A^3]: 0.06 	 q(sum): 1.05021 	 q(int): 0.43445 	 error: -58.6 %
-volume [A^3]: 0.51 	 q(sum): 2.91783 	 q(int): 3.47558 	 error: 19.1 %
-volume [A^3]: 3.38 	 q(sum): 17.16309 	 q(int): 22.91035 	 error: 33.5 %
-volume [A^3]: 27.00 	 q(sum): 149.55022 	 q(int): 183.28277 	 error: 22.6 %
-volume [A^3]: 1728.00 	 q(sum): 11022.81763 	 q(int): 11730.09705 	 error: 6.4 %
-volume [A^3]: 3375.00 	 q(sum): 21785.07992 	 q(int): 22910.34581 	 error: 5.2 %
+<pre>Die Komponenten des Trägheitsmoments sind 
+I_x=1.62e-46
+I_y=8.71e-46
+I_z=1.03e-45 kg m^2.
+Daraus ergeben sich die charakteristischen Rotationstemperaturen
+theta_x=2.48 K
+theta_y=0.46 K
+theta_z=0.39 K.
+Man erhält eine Rotationsentropy von 85.8614 J/(mol * K).
 </pre>
 </div>
 </div>
@@ -15466,90 +14931,34 @@ volume [A^3]: 3375.00 	 q(sum): 21785.07992 	 q(int): 22910.34581 	 error: 5.2 %
 
 </div>
 
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[28]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Abhängigkeit von n (Volumen=1 cm^3)&quot;</span><span class="p">)</span>    
-<span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">centi</span>
-<span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">,</span> <span class="mf">1e7</span><span class="p">,</span> <span class="mf">1e8</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">q1</span> <span class="o">=</span> <span class="n">q_sum</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">q2</span> <span class="o">=</span> <span class="n">q_int</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">q2</span> <span class="o">-</span> <span class="n">q1</span><span class="p">)</span> <span class="o">/</span> <span class="n">q1</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n_max: </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">1.2e</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> q(sum): </span><span class="si">{</span><span class="n">q1</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> q(int): </span><span class="si">{</span><span class="n">q2</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> error: </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
- Abhängigkeit von n (Volumen=1 cm^3)
-n_max: 1.00e+00 	 q(sum): 1.00e+00 	 q(int): 6.79e+24 	 error: 6.79e+26 %
-n_max: 1.00e+03 	 q(sum): 1.00e+09 	 q(int): 6.79e+24 	 error: 6.79e+17 %
-n_max: 1.00e+05 	 q(sum): 1.00e+15 	 q(int): 6.79e+24 	 error: 6.79e+11 %
-n_max: 1.00e+06 	 q(sum): 1.00e+18 	 q(int): 6.79e+24 	 error: 6.79e+08 %
-n_max: 1.00e+07 	 q(sum): 9.98e+20 	 q(int): 6.79e+24 	 error: 6.80e+05 %
-n_max: 1.00e+08 	 q(sum): 8.08e+23 	 q(int): 6.79e+24 	 error: 7.40e+02 %
-n_max: 1.00e+09 	 q(sum): 6.79e+24 	 q(int): 6.79e+24 	 error: 1.19e-06 %
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div></section></section><section><section>
+</div></section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>(b) Berechnen Sie die Beiträge der Translationszustände mit $n_x = n_y = n_z = 1, 1000, 10000, 100000$ zu der Zustandssumme eines Heliumatoms, das sich in einem Behälter mit der Kantenlänge 1,0 cm befindet. Diskutieren Sie anhand dieses Ergebnisses die Probleme, die korrekte Summenformel auf realistische Fragestellungen anwenden zu wollen.</p>
+<p>Für die elektronische Entropie des Grundzustands gilt ein einfacher Zusammenhang:</p>
+$$
+S_{el} = R \cdot \ln(g_0)
+$$<p>Wobei $g_0$ der Entartungsgrad des Grundzustands ist.</p>
 
 </div>
 </div>
 </div>
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[65]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> Beiträge einzelner Translationszustände&quot;</span><span class="p">)</span>
-<span class="n">length</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">centi</span>
-<span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1e3</span><span class="p">,</span> <span class="mf">1e5</span><span class="p">,</span> <span class="mf">1e6</span><span class="p">,</span> <span class="mf">1e7</span><span class="p">,</span> <span class="mf">1e8</span><span class="p">,</span> <span class="mf">1e9</span><span class="p">]</span>
-<span class="n">refq</span> <span class="o">=</span> <span class="n">q_sum</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="mf">1e9</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">ns</span><span class="p">:</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">q_sum</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">n_max</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">n_min</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
-    <span class="n">contribution</span> <span class="o">=</span> <span class="n">q</span> <span class="o">/</span> <span class="n">refq</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n: </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> contribution: </span><span class="si">{</span><span class="n">contribution</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">S_el</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Man erhält eine elektronische Entropie von </span><span class="si">{</span><span class="n">S_el</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> J/(mol * K).&quot;</span><span class="p">)</span>
+
+<span class="n">S_tot</span> <span class="o">=</span> <span class="n">S_trans</span> <span class="o">+</span> <span class="n">S_rot</span> <span class="o">+</span> <span class="n">S_el</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die Gesamtentropie beträgt </span><span class="si">{</span><span class="n">S_tot</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> J/(mol*K).&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15571,15 +14980,8 @@ n_max: 1.00e+09 	 q(sum): 6.79e+24 	 q(int): 6.79e+24 	 error: 1.19e-06 %
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
- Beiträge einzelner Translationszustände
-n: 1.00e+00 	 contribution: 4.02e-05
-n: 1.00e+03 	 contribution: 4.02e-05
-n: 1.00e+05 	 contribution: 4.02e-05
-n: 1.00e+06 	 contribution: 4.02e-05
-n: 1.00e+07 	 contribution: 3.99e-05
-n: 1.00e+08 	 contribution: 2.20e-05
-n: 1.00e+09 	 contribution: 2.86e-31
+<pre>Man erhält eine elektronische Entropie von 5.7631 J/(mol * K).
+Die Gesamtentropie beträgt 252.1782 J/(mol*K).
 </pre>
 </div>
 </div>
@@ -15588,14 +14990,199 @@ n: 1.00e+09 	 contribution: 2.86e-31
 
 </div>
 
-</div></section></section><section><section>
+</div></div></section></section><section><section>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>c) Berechnen Sie die Rotationszustandssumme für HI-Moleküle für Temperaturen von 0 K, 1 K, 10 K, 100 K, 273 K jeweils durch explizite Summation und mit Hilfe der Näherungsformel, die sich durch Ersetzen der Summe durch ein Integral ergibt. Vergleichen Sie beide Ergebnisse. Ab welcher Temperatur ist die Näherung gerechtfertigt?</p>
+<h1 id="2.-Molekulare-W%C3%A4rmekapazit%C3%A4t">2. Molekulare W&#228;rmekapazit&#228;t<a class="anchor-link" href="#2.-Molekulare-W%C3%A4rmekapazit%C3%A4t">&#182;</a></h1><p>CO2 (Bindungsabstand 116,3 pm) liegt in einen Singulett-Grundzustand vor. Es besitzt eine symmetrische Streckschwingung vom Typ $\Sigma_g^+$ mit einer Wellenzahl von $\tilde{\nu}= 1340$ cm$^{−1}$, eine asymmetrische Streckschwingung vom Typ $\Sigma_u^+$ mit einer Wellenzahl von $\tilde{\nu}= 2349$ cm$^{−1}$ und eine entartete Knickschwingung vom Typ $\Pi_u$ mit einer Wellenzahl von $\tilde{\nu}= 667$ cm$^{−1}$.</p>
+
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>a) Berechnen und zeichnen Sie die molare isochore Wärmekapazität $C_{\bar{V}}$ (bei Standarddruck) als Funktion der Temperatur im Bereich von 0 K bis 1200 K. Verwenden Sie die harmonische Näherung, vernachlässigen Sie elektronische Anregungen und nehmen Sie an, CO$_2$ verhalte sich wie ein starrer Rotator.</p>
+$$
+c_{\bar{V}} = c_{\bar{V}}^{trans} + c_{\bar{V}}^{rot} + c_{\bar{V}}^{vib}
+$$
+</div>
+</div>
+</div>
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Die Translations- und Rotationszustände sind quasi alle angeregt (charakteristische Rotationstemperatur von $1.76~K$) und ergeben insgesamt einen Beitrag von $2.5~R$ zur Wärmekapazität.</p>
+<p>Der Beitrag der Schwingungen lässt sich wie folgt berechnen:</p>
+$$
+c_{\bar{V}, m}^{vib}= R \cdot \left(\frac{\theta_{vib}}{T}\right)^{2}\left(\frac{e^{-\frac{\theta_{vib}}{2 T}}}{1-e^{-\frac{\theta_{vib}}{T}}}\right)^{2}
+$$<p>Wobei die charakteristischen Schwingungstemperaturen wie folgt berechnet werden:</p>
+$$
+\theta_{vib}=\frac{h c \tilde{v}}{k}
+$$<p>Die Knickschwingung ist dabei zweifach entartet.</p>
+
+</div>
+</div>
+</div>
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[66]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">k</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">exp</span><span class="p">,</span> <span class="n">pi</span>
+
+<span class="n">temperatures</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1200</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">nu_1</span> <span class="o">=</span> <span class="mi">1340</span> <span class="o">*</span> <span class="mf">1e2</span> <span class="c1"># m</span>
+<span class="n">nu_2</span> <span class="o">=</span> <span class="mi">2349</span> <span class="o">*</span> <span class="mf">1e2</span> <span class="c1"># m</span>
+<span class="n">nu_3</span> <span class="o">=</span> <span class="mi">667</span> <span class="o">*</span> <span class="mf">1e2</span> <span class="c1"># m, zweifach entartet</span>
+
+<span class="n">theta_vib_1</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">nu_1</span> <span class="o">/</span> <span class="n">k</span>
+<span class="n">theta_vib_2</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">nu_2</span> <span class="o">/</span> <span class="n">k</span>
+<span class="n">theta_vib_3</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">nu_3</span> <span class="o">/</span> <span class="n">k</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Die charakteristischen Schwingungstemperaturen sind </span><span class="si">{</span><span class="n">theta_vib_1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K, </span><span class="si">{</span><span class="n">theta_vib_2</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K und </span><span class="si">{</span><span class="n">theta_vib_3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K.&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Die charakteristischen Schwingungstemperaturen sind 1927.96 K, 3379.69 K und 959.66 K.
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">c_vib</span><span class="p">(</span><span class="n">theta_vib</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">theta_vib</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">c</span> <span class="o">*=</span> <span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">theta_vib</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">theta_vib</span> <span class="o">/</span> <span class="n">T</span><span class="p">))</span> <span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="n">c_tots</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">temperatures</span><span class="p">:</span>
+    <span class="n">c_1</span> <span class="o">=</span> <span class="n">c_vib</span><span class="p">(</span><span class="n">theta_vib_1</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> 
+    <span class="n">c_2</span> <span class="o">=</span> <span class="n">c_vib</span><span class="p">(</span><span class="n">theta_vib_2</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+    <span class="n">c_3</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">c_vib</span><span class="p">(</span><span class="n">theta_vib_3</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span> <span class="c1"># doubly degenerate</span>
+    <span class="n">c_tot</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="o">*</span> <span class="n">R</span> <span class="o">+</span> <span class="n">c_1</span> <span class="o">+</span> <span class="n">c_2</span> <span class="o">+</span> <span class="n">c_3</span>
+    <span class="n">c_tots</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c_tot</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">temperatures</span><span class="p">,</span> <span class="n">c_tots</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$c_{\bar</span><span class="si">{V}</span><span class="s2">}$ [J / (mol * K)]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;T [K]&quot;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[68]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>Text(0.5, 0, &#39;T [K]&#39;)</pre>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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
+"
+class="
+jp-needs-light-background
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>b) Kennzeichnen Sie die Temperaturbereiche, in denen die von Ihnen berechnete Wärmekapazität Gültigkeit besitzt.</p>
 
 </div>
 </div>
@@ -15607,50 +15194,130 @@ n: 1.00e+09 	 contribution: 2.86e-31
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Unter 200 K ist CO$_2$ nicht mehr gasförmig, sondern gefriert, sodass die Annahmen nicht mehr zutreffen. Bei höheren Temperaturen kommt es zur Anregung elektronischer Freiheitsgrade oder sogar zur Dissoziation (~1000 K).</p>
+
+</div>
+</div>
+</div>
+</div></div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>c) Vergleichen Sie das in (a) erhaltene Ergebnis mit möglichst vielen verschiedenen Literaturwerten. Beachten Sie dabei die Herkunft der Literaturwerte (aus kalorimetrischen Messungen, spektroskopischen Bestimmungen etc.)</p>
+
+</div>
+</div>
+</div>
+</div><div class="fragment">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<table>
+<thead><tr>
+<th>Temperatur</th>
+<th>Berechnet</th>
+<th>Lange's Handbook of Chemistry, 10th ed, pp 1525-1528</th>
+<th><a href="http://webbook.nist.gov/cgi">http://webbook.nist.gov/cgi</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200 K</td>
+<td>24.05</td>
+<td>24.74</td>
+<td>22.87</td>
+</tr>
+<tr>
+<td>270 K</td>
+<td>27.49</td>
+<td>27.73</td>
+<td>27.27</td>
+</tr>
+<tr>
+<td>290 K</td>
+<td>28.44</td>
+<td>28.08</td>
+<td>28.17</td>
+</tr>
+<tr>
+<td>370 K</td>
+<td>31.87</td>
+<td>29.67</td>
+<td>31.39</td>
+</tr>
+<tr>
+<td>670 K</td>
+<td>40.57</td>
+<td>35.47</td>
+<td>39.62</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div></div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="3.-Debye--und-Einstein-Model">3. Debye- und Einstein-Model<a class="anchor-link" href="#3.-Debye--und-Einstein-Model">&#182;</a></h1><p>Für Blei beträgt die Grenzfrequenz $\nu_{max} = 0.19 \cdot 10^{13}~s^{−1}$. Berechnen Sie mit dieser Information die molare isochore Wärmekapazität von Blei im Rahmen der Modelle von Einstein und Debye für 20 K und 40 K. Vergleichen Sie die erhaltenen Werte mit experimentellen Daten.</p>
 $$
 \begin{aligned}
-\varepsilon_J &amp;= hcBJ(J+1) ~~~\forall~J=0,1,2,... \\
-q_{rot}(sum) &amp;= \sum_J (2J+1) \exp(-\beta \varepsilon_J) \\
-q_{rot}(int) &amp;= \int_0^\infty(2J+1)\exp(-\beta \varepsilon_J)\mathrm{d}J = \frac{kT}{hcB} \\
-B &amp;= \frac{\hbar}{4 \pi c I} \\
-I &amp;= \mu R^2
+T_1 &amp;= 20~K \\
+T_2 &amp;= 40~K \\
+v_{max} &amp;= 0.19 \cdot 10^{13}~s^{−1} \\
+c_{\bar{V}}(20~K, exp.) &amp;= 11.01~J/(K \cdot mol)\\
+c_{\bar{V}}(40~K, exp.) &amp;= 19.57~J/(K \cdot mol)\\
 \end{aligned}
 $$
 </div>
 </div>
 </div>
-</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Einstein-Model">Einstein-Model<a class="anchor-link" href="#Einstein-Model">&#182;</a></h2>$$
+C_{V}=3 R\left(\frac{\Theta_{\mathrm{E}}}{T}\right)^{2} \frac{e^{\Theta_{\mathrm{E}} / T}}{\left(e^{\Theta_{\mathrm{E}} / T}-1\right)^{2}} \text { mit } \frac{\Theta_{\mathrm{E}}}{T}=\frac{h v_{\max }}{k T}
+$$<p>Hierbei ist $v_{\max}$ die Grenzfrequenz.</p>
+
+</div>
+</div>
+</div>
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[69]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">hbar</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">angstrom</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v_max</span> <span class="o">=</span> <span class="mf">0.19</span> <span class="o">*</span> <span class="mf">1e13</span> 
+<span class="n">T_1</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">T_2</span> <span class="o">=</span> <span class="mi">40</span>
 
-<span class="n">R</span> <span class="o">=</span> <span class="mf">1.609</span> <span class="o">*</span> <span class="n">angstrom</span>
-<span class="n">m1</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">m2</span> <span class="o">=</span> <span class="mi">127</span>
-<span class="n">mu</span> <span class="o">=</span> <span class="p">(</span><span class="n">m1</span> <span class="o">*</span> <span class="n">m2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">m1</span> <span class="o">+</span> <span class="n">m2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="o">/</span> <span class="n">N_A</span> <span class="c1"># kg</span>
-<span class="n">I</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">R</span><span class="o">**</span><span class="mi">2</span>
-<span class="n">B</span> <span class="o">=</span> <span class="n">hbar</span> <span class="o">/</span> <span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">I</span><span class="p">)</span>
+<span class="n">Omega</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">v_max</span> <span class="o">/</span> <span class="n">k</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;mu: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">mu</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">I</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> kg m^2&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;B: </span><span class="se">\t</span><span class="s2"> </span><span class="si">{</span><span class="n">B</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> m^-1&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">epsilon_J</span><span class="p">(</span><span class="n">J</span><span class="p">):</span>
-    <span class="n">eps</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">B</span> <span class="o">*</span> <span class="n">J</span> <span class="o">*</span> <span class="p">(</span><span class="n">J</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">eps</span>
-
-<span class="k">def</span> <span class="nf">q_rot_sum</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">J_max</span><span class="o">=</span><span class="mf">1e6</span><span class="p">):</span>
-    <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">k</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">J</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">beta</span> <span class="o">*</span> <span class="n">epsilon_J</span><span class="p">(</span><span class="n">J</span><span class="p">))</span> <span class="k">for</span> <span class="n">J</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">J_max</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
-    <span class="k">return</span> <span class="n">q</span>
-
-<span class="k">def</span> <span class="nf">q_rot_int</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">k</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">B</span><span class="p">)</span>
+<span class="n">C_V1</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">Omega</span><span class="o">/</span><span class="n">T_1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">Omega</span><span class="o">/</span><span class="n">T_1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">Omega</span><span class="o">/</span><span class="n">T_1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">C_V2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">Omega</span><span class="o">/</span><span class="n">T_2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">Omega</span><span class="o">/</span><span class="n">T_2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">Omega</span><span class="o">/</span><span class="n">T_2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Die isochore molare Wärmekapazität nach Einstein beträgt</span>
+<span class="si">{:.4f}</span><span class="s2"> J/(K * mol) bei 20 K und</span>
+<span class="si">{:.4f}</span><span class="s2"> J/(K * mol) bei 40 K.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">C_V1</span><span class="p">,</span> <span class="n">C_V2</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15672,9 +15339,10 @@ $$
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>mu: 	 1.65e-27 kg
-I: 	 4.27e-47 kg m^2
-B: 	 6.56e+02 m^-1
+<pre>Die isochore molare Wärmekapazität nach Einstein beträgt
+5.5439 J/(K * mol) bei 20 K und
+16.4593 J/(K * mol) bei 40 K.
+
 </pre>
 </div>
 </div>
@@ -15683,25 +15351,44 @@ B: 	 6.56e+02 m^-1
 
 </div>
 
-</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div></div></section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Debye-Model">Debye-Model<a class="anchor-link" href="#Debye-Model">&#182;</a></h2>$$
+C_{V}=9 R\left(\frac{T}{\Theta_{\mathrm{D}}}\right)^{3} \int_{0}^{\Theta_{\mathrm{D}} / T} \frac{x^{4} e^{x}}{\left(e^{x}-1\right)^{2}} \mathrm{~d} x \text { mit } \frac{\Theta_{\mathrm{D}}}{T}=\frac{h v_{\max }}{k T} \text { und } x=\frac{h v}{k T}
+$$
+</div>
+</div>
+</div>
+</div><div class="fragment"><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[70]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Abhängigkeit von der Temperatur:&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">273</span><span class="p">]:</span>
-    <span class="c1"># 0 is ill-defined because of beta</span>
-    <span class="n">q1</span> <span class="o">=</span> <span class="n">q_rot_sum</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
-    <span class="n">q2</span> <span class="o">=</span> <span class="n">q_rot_int</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
-    <span class="n">error</span> <span class="o">=</span> <span class="p">(</span><span class="n">q2</span> <span class="o">-</span> <span class="n">q1</span><span class="p">)</span> <span class="o">/</span> <span class="n">q1</span> <span class="o">*</span> <span class="mi">100</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperatur: </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2"> K </span><span class="se">\t</span><span class="s2"> q(sum): </span><span class="si">{</span><span class="n">q1</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> q(int): </span><span class="si">{</span><span class="n">q2</span><span class="si">:</span><span class="s2">2.2e</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> error: </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span><span class="se">\n</span><span class="s2">Die charakteristische Rotationstemperatur ist 9.45 K.</span>
-<span class="s2">Ab etwa dem fünffachen diesen Wertes (50 K) ist der Fehler durch die Integration unter 6 %</span>
-<span class="s2">und in einer akzeptablen Größenordnung.&quot;&quot;&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">trapz</span>
+
+<span class="n">Omega</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">v_max</span> <span class="o">/</span> <span class="n">k</span>
+
+<span class="k">def</span> <span class="nf">debye_heat_capacity</span><span class="p">(</span><span class="n">T</span><span class="p">):</span>   
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">h</span> <span class="o">*</span> <span class="n">v_max</span> <span class="o">/</span> <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">c_V</span> <span class="o">=</span> <span class="mi">9</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">T</span> <span class="o">/</span> <span class="n">Omega</span><span class="p">)</span><span class="o">**</span><span class="mi">3</span> <span class="o">*</span> <span class="n">trapz</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">c_V</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">c1</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="o">=</span> <span class="n">debye_heat_capacity</span><span class="p">(</span><span class="n">T_1</span><span class="p">)</span>
+<span class="n">c2</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">debye_heat_capacity</span><span class="p">(</span><span class="n">T_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Die isochrome molare Wärmekapazität nach Debye beträgt</span>
+<span class="si">{:.4f}</span><span class="s2"> J/(K * mol) bei 20 K und</span>
+<span class="si">{:.4f}</span><span class="s2"> J/(K * mol) bei 40 K.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+<span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15723,17 +15410,145 @@ B: 	 6.56e+02 m^-1
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>
-Abhängigkeit von der Temperatur:
-Temperatur: 1 K 	 q(sum): 1.00e+00 	 q(int): 1.06e-01 	 error: -89.4095 %
-Temperatur: 10 K 	 q(sum): 1.47e+00 	 q(int): 1.06e+00 	 error: -28.0197 %
-Temperatur: 50 K 	 q(sum): 5.64e+00 	 q(int): 5.30e+00 	 error: -6.1400 %
-Temperatur: 100 K 	 q(sum): 1.09e+01 	 q(int): 1.06e+01 	 error: -3.1083 %
-Temperatur: 273 K 	 q(sum): 2.92e+01 	 q(int): 2.89e+01 	 error: -1.1476 %
+<pre>Die isochrome molare Wärmekapazität nach Debye beträgt
+10.5779 J/(K * mol) bei 20 K und
+19.4972 J/(K * mol) bei 40 K.
 
-Die charakteristische Rotationstemperatur ist 9.45 K.
-Ab etwa dem fünffachen diesen Wertes (50 K) ist der Fehler durch die Integration unter 6 %
-und in einer akzeptablen Größenordnung.
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[71]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;20 K&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;40 K&quot;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$h \cdot v_</span><span class="si">{max}</span><span class="s2"> / k \cdot T$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x^4 \cdot \exp(x) / (\exp(x) - 1)^2$&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[71]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>&lt;matplotlib.legend.Legend at 0x7f5ad41a55e0&gt;</pre>
+</div>
+
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAX4AAAEKCAYAAAAVaT4rAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjUuMiwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy8qNh9FAAAACXBIWXMAAAsTAAALEwEAmpwYAAAqeUlEQVR4nO3dd3yV9fn/8deVARkkkJ1ACEtkqIAMAQFBEEVErYs6UKtU/WptXf212Npa22pROxytbR1ttbYqrkJxYVVQAQdDXKBFNrJk75Fcvz/uUCIGzAknuXPOeT8fj/PgzPtcOSTX+dyfcX3M3RERkcSRFHYAIiJSv5T4RUQSjBK/iEiCUeIXEUkwSvwiIglGiV9EJMGkhB3A18nPz/fWrVuHHYaISEyZOXPmF+5eUN1joSR+M1sEbAbKgT3u3vNAz23dujUzZsyor9BEROKCmS0+0GNhtviPd/cvQnx/EZGEpD5+EZEEE1bid2CSmc00s8tDikFEJCGF1dXTz90/N7NC4GUzm+fur+99sPLL4HKAsrKyr7x49+7dLFu2jB07dtRbwGFIS0ujtLSU1NTUsEMRkThiYRdpM7OfAVvc/dfVPd6zZ0/ff3B34cKFZGVlkZeXh5nVQ5T1z91Zu3Ytmzdvpk2bNmGHIyIxxsxmHmjiTL139ZhZppll7b0OnAh8GMkxduzYEddJH8DMyMvLi/uzGhGpf2F09RQBz1Ym7RTgn+7+YqQHieekv1ci/IwitVVRARs2wJYtsHlz8O+WLbBnD7gHF4CkJMjIgCZNIDMzuDRtGtxOVPWe+N19AdC1vt83mpYuXcpFF13EypUrSUpK4vLLL+eaa64BYN26dXzzm99k0aJFtG7dmnHjxpGTk/Ol1y9atIgRI0bw4YfBic4DDzzAH//4R1555ZWvPFckUe3cCQsWwKefBpf582H5cli5Ej7/HFavhvLy2h8/PR0KC6G4GEpKoGVLaNsW2rWDww6DNm0gLS16P09D0uBX7jZEKSkp/OY3v6F79+5s3ryZHj16MHToUDp37szYsWMZMmQIY8aMYezYsYwdO5bbb7/9gMf6+9//zr333surr76qpC8Ja/16mD0bZs0KLjNnBom+omLfczIygkvjxkFrvaAgSN4pKZCaGvybnBxckqp0YldUBGcBu3cH/+69vn17cFmyBD75BLZtg1279r3OLPgy6NoVunUL/u3SJfhiSIrxifBK/LVQUlJCSUkJAFlZWXTq1Inly5fTuXNnxo8fz+TJkwG4+OKLGTRo0AET/7hx4xg7diyvvPIK+fn59RW+SOhWrYLXX4cpU4LLh1VG+Zo2DS5duuzrkiksDK6npUGjRkFSjqaKiuAMY8OG4Exi7dqg22jDhiDOiRP3dR1lZsIxx8Bxx8Gxx0Lv3kFssSTmE/+118J770X3mN26wV131ey5ixYtYvbs2fTu3RuAVatW/e9LoaSkhNWrV1f7usWLF3P11Vcze/ZsiouLoxC1SMNVXg5vvRUk0IkT9yX6Ro2CpN69O+TnQ1FR0JLPzKzfVnVSUnD2kJ4edPtU5Q6bNsGyZbBiRfCl8N57MHly8JgZdOwIJ50EQ4fCwIFB/A1ZzCf+MG3ZsoWzzjqLu+66i+zs7IheW1BQQG5uLuPGjeO6666rowhFwrNrF7z0Ejz5JDz/fJAwk5ODxNqzZ5DkW7aE3Nygq6ahMtt3FnLEEcF97rBxY9Ad9fnnwbjDvfcGDcaUlOCMYNgwGDEiaEg2tHkaMZ/4a9oyj7bdu3dz1llnccEFF3DmmWf+7/6ioiJWrFhBSUkJK1asoLCwsNrXZ2Rk8MILL9C/f38KCwu54IIL6it0kTpTURF0jfzzn/DUU0HffUYGNG8ORx0FZWVB4o/1QVMzaNYs+ALba8sWmDcPFi8O/p02DX760+BnP+MMOPNMGDCgYXzJxXziD4O7M3r0aDp16sT111//pcdOO+00Hn74YcaMGcPDDz/M6aeffsDjFBQU8OKLLzJo0CDy8/M56aST6jp0kTqxfDk89BA8+CAsXRoMwJaWQo8ewUyZgoKgJRzPmjQJvgh69gzOCNasCbq0Fi2CP/0J/vAHyM4OzgJGjYITTgjvSyD0lbtfp7qVu3PnzqVTp04hRQRvvvkmAwYM4KijjiKpsiPytttuY/jw4axdu5aRI0eyZMkSysrKePLJJ8nNzf3S6/efzjlnzhyGDx/OM88887+xgr3C/llFDqSiAiZNgj//Gf7976Afv6wMWrcOZr40bx7/yb6mtm6F998PpqcuXRoMJOfkwMiRcOGF0Ldv9Mc0DrZyV4m/gUukn1Viw/bt8Mgj8JvfwH//G7R0W7cOBjjbtg0GSOXAduyAOXOC7qClS4MvzObN4aKLYPToYA1BNBws8ev7WERqZO1auO++YBBzzZpg4dOAAUHCLy6O/bnt9SUtLZgC2rt3MC4wc2bwBXr77TB2bND6v+oqOOusuvsSVeIXkYP64gv49a+DhL9tG7RqBSeeCJ06BQOcUntNmgTTPwcODNYPvPNOMC5w4YVw5ZXBF8BB1n/WmhK/iFRr/Xr47W+DmXNbtwb99p07Q4cOwUwdia7CwmDgt6IiSP5z5gSL2+qCEr+IfMn27UHCv/POYK56u3bBVMwOHWJ/GmYsSEoKVi0fcUSwwrkuKPGLCBC0NB97DG68MRh0bNs2KEvQqZMGbOONEr+IMHUqXH990MdcXByUHzjyyMQuXRzPNA5/CMrLyzn66KMZMWLE/+5bt24dQ4cOpX379gwdOpT169d/5XWLFi3iyCOP/N/tBx54gO7du1f7XJG6tHIlXHAB9O8fVKg89lg4+2zo00dJP54p8R+Cu++++ytz7PeWZf7vf//LkCFDGDt27EGPsbcs86RJk1SWWepNRUWwmrRjRxg3Lqgnc8YZwWrSvLywo5O6psRfS8uWLeO5557j29/+9pfuHz9+PBdffDEQlGX+17/+dcBj7C3LPGnSJJVllnozZ07Qsr/yyn0lBIYPD6ZpNrRiYlI34qOPf9Cgr943cmQwCXbbtuC3en/f+lZw+eKL4Ny2qsp6+gdz7bXXcscdd7B58+Yv3a+yzNJQ7dwJt9wCd9wRTMfs1y+oK6O5+IlHLf5amDhxIoWFhfTo0aPWxygoKKCsrIxx48ZFMTKR6s2aFST5X/0K2reH00+HwYOV9BNVfLT4D9ZCz8g4+OP5+TVq4Vc1depUJkyYwPPPP8+OHTvYtGkTo0aN4tFHH1VZZmlQdu+GW28NLhkZcPzxQcXMhr5RiNQttfhr4Ve/+hXLli1j0aJFPP744wwePJhHH30U2FeWGahxWeYf/ehHvPTSS/USuySOuXODejC33BLMyT/ttKC2jpK+KPFH2ZgxY3j55Zdp3749L7/8MmPGjDno89u0acOECRO49NJLefvtt+spSoln7kFd/B49guJfAwfCqacGK3A1eCsQL109IRo0aBCDqgwu5+Xl8corrxz0Na1bt/5fLX6Arl27snz58roKURLIxo1wxRXwxBNBbfy+feHww1U5U75MiV8kTrzzDpx7brD1X/fuQdLXLGGpjtoBIjHOHX73u2B65oYNMHRoUHJBSV8ORC1+kRi2dWuwa9MTTwR9+H37BgO56suXg4nZxO/uWJz/djf0bTElXPPnB2UWPv446Nrp1w/2295ZpFox2dWTlpbG2rVr4zoxujtr164lTQXQpRoTJwYLshYuDObmn3iikr7UXEy2+EtLS1m2bBlr1qwJO5Q6lZaWRmlpadhhSAPiDr/4Bdx8M5SUBDV3OnfWrB2JTEwm/tTUVNq0aRN2GCL1ascOuPTSYLOUDh2CUspqF0htxGTiF0k0q1bBN74Bb70V9Of37w+q4i21pcQv0sB98EFQOnnlymArxL59tfetHJpQegbNLNnMZpvZxDDeXyRWPPdc0I+/cWOwScqAAUr6cujCGhK6Bpgb0nuLxIQHHwwKq2VnB7N2evaEFJ2jSxTUe+I3s1LgFODB+n5vkViwd+bOZZcF9XaGDoVOnbQoS6InjPbDXcAPgKwDPcHMLgcuBygrK6ufqEQagPJyuPrqYD/cDh2CzeW0QZtEW722+M1sBLDa3Wce7Hnufr+793T3ngUFBfUUnUi4tm8PdgH905+gS5eg3o6SvtSF+m7x9wNOM7PhQBqQbWaPuvuoeo5DpEFZvz7oz586FXr1CmbvNGkSdlQSr+q1xe/uN7p7qbu3Bs4FXlXSl0S3enVQduHtt4P5+YMHK+lL3dIcAZEQLV8eTNNcsCCYqtm7NzRqFHZUEu9CS/zuPhmYHNb7i4Rt4UIYMgRWrAgGcXv10nRNqR/6NRMJwbx5QUt/w4Yg6ffsCcnJYUclieJr+/jNbKiZPWBm3SpvX17nUYnEsfffDwZvN20K+vZ79VLSl/pVkxb/VcAlwE1mlgt0q9OIROLYrFlBS9896OY56iiVVJb6V5NfuTXuvsHdvw+cCPSq45hE4tLepG8WtPS7dFHSl3DU5Nfuub1X3H0M8EjdhSMSn2bPDpI+BEn/qKNUgkHC87WJ393H73f7XjPLNDP1SorUwJw5+7p3jj8ejjhCSV/CVaMTTTNLMrPzzew5M1sFzANWmNlHZnanmbWv2zBFYtOcOUFffkVFsDDryCOV9CV8Ne1hfA1oB9wIlLh7S3cvBAYAbwFjzUwrcEWqeP/9IOmXlwctfSV9aShqOo//BHffvf+d7r4OeBp42sxSoxqZSAz7+ON9SX/QIPXpS8NSoxZ/dUl/LzO75OueI5JIFiwI+vR37QqSfpcuSvrSsERjMtktUTiGSFxYvjxo6W/aBAMHqqUvDVONunrM7P0DPQQURS8ckdi1Zk2wW9bKlUFLv1s3zdOXhqmmffxFwEnA+v3uN2BaVCMSiUEbNwYbp3z2WdDS79lTSV8arpom/olAE3d/b/8HzGxyNAMSiTVbt8Ipp8AHHwSllY85RrV3pGGrUeJ399EHeez86IUjElt27oQzz4Tp06FfP+jTR6WVpeHTyahILZWXw6hRMGlSsIFKv37aREVigxK/SC14hTPmivU89VRQVrl/f2jcOOyoRGpGiV+kFt4cegvfeehoTi+byYABkJERdkQiNVerxG9mp0Y7EJFYMfXi+xnw6i18knok3232KFlZYUckEpnatvhvjWoUIjHi3Z9MoM8jVzI15Tiyy5qyp6g07JBEIlbb+QdaiygJZ/p0eOb2z2iU1IWtrTqTnaeRXIlNtU38HtUoRBq4uR9VMOIUIy31WwxosYDs0jzYvv96RpHYoBnHIl9jxczP8b4n09fuYFTRf8hqmRt2SCKHRLN6RA5i8/JNbOp/Mi13L+Db2eMoap2OJamnU2JbbRP/qqhGIdIA7dmxh0+6jaTdjo94qdlImnYowVSAR+JArX6L3X1otAMRaUi8wpnW42p6fvES/2oyirwOhZhqMUic0G+ySDV+e2c5RR9vYXzaOeR3LIA0LcuV+FHbBVyZZqb6gxKXnn6ygu+PSeGh7OvIOqwEMjPDDkkkqmqU+M0syczON7PnzGw1MA9YYWYfmdmdZta+bsMUqR8fPvQ2bb/Zk6GZb3Jjyd9IyssJOySRqKtpi/81oB1wI1Ds7i3dvRAYALwFjDWzUXUUo0i9WDJlIUWXnUYO67k+72EaFeeFHZJInahpH/8J1W2m7u7rgKeBp80sNaqRidSjDQvXs+vEU8jy3bxfNISsVs3DDkmkztSoxb836ZvZXWbVbx1d3RdDdcwszczeMbM5lV1F2qxdQrVryy4WdD+bsl3zeS3nDLIPb665+hLXIh3c3QJMMLNMADM70cymRniMncBgd+8KdAOGmVmfCI8hEhXu8P0rNrNnw2b+nXU+OR2LtFmuxL2IpnO6+01mdj4w2cx2AluBMREewwm+QABSKy+q/SOh+N1vnXv/mcfmnB9xUbupmLbQkgQQUdPGzIYAlxEk/ALge+7+RqRvambJZvYesBp42d3fjvQYIofq3Z89x+HfP41h2W9yUelrmKZtSoKI9Jz2x8BP3H0QcDbwhJkNjvRN3b3c3bsBpcAxZnZk1cfN7HIzm2FmM9asWRPp4UW+1vzxH9HhlvNonbSY6wsfxXI1bVMSR0SJ390Hu/ubldc/AE4GflnbN3f3DcBkYNh+99/v7j3dvWdBQUFtDy9SrbWffEGjs09lGxksLulDaovisEMSqVc1XcB1oJk8K4AhB3tONccqMLNmldfTgRMIFoSJ1LldW3axpPfZFO75nOl5I8hoWxJ2SCL1rsYLuMzsu2ZWVvVOM2sE9DWzh4GLa3isksrjvQ+8S9DHP7HGEYvUkjvcculiijZ+ysSsc8npWKxpm5KQajqrZxhwKfCYmbUBNgBpQDIwCfidu79XkwO5+/vA0RFHKnKI7rkHbnuyPWua3cX57WeAqm1KgqrRb7677wDuA+6rXKGbD2yv7KMXafDevXUSO2/6DwOzz+XcltMgo1nYIYmEJuImT+UK3RV1EItInfjsuXm0v2kkTZJa0K1wM0m5RWGHJBKqiBK/maUBVwH9CRZdvQn8sfKMQKTBWTd/HclnnMpuUllY3Jf0ksKwQxIJXaTz+B8BjgDuBX4PdAL+Hu2gRKJhz449LOz9TUp2L2Fq3umkt1MNHhGIvKunQ2WNnb1eM7M50QxIJFr+cOlMrlj3BhOyzif/8ELtlytSKdK/hNlVC6qZWW8g0iJtInXu0Ufh2sd6c03Tv1JweJ5q8IhUEWmLvzdwkZktqbxdBnxsZh8Q1F/rEtXoRGph7t9n8MroeXTL6svI0mnQRBuqiFQVaeI/m32VNfc6nmCHLpHQrflwFU0vOYNfVBhzckeQnK/BXJH9RdrV8wTwTWAJQWXN7wNXuPtid18c7eBEIrF7224+73cOzcrXMiP/JDLKVOdJpDqRJv7eBN070wjKLXwO9It2UCK1Ma33dXTd9AYvZI2k6eFFmsEjcgCRJv7dwHYgnaBkw0J3r4h6VCIRGv/jdxj44R+Y2PhM8joWYirHIHJAkSb+dwkSfy+CRVznmdlTUY9KJALTp8M5d/biuxkPkHFYCWRkhB2SSIMWabNotLvPqLy+EjjdzC6MckwiNbbyvZXccupS8lPbc1LJByTl54cdkkiDF+meuzOquU8rdyUUOzfvYtWAs/nHlrm82PxbZDZvFnZIIjEh0j13zcxGmdlPK2+XmdkxdROayIG5w7RjrqHrlqlMyT6N5m0yNJgrUkOR9vHfB/QFzqu8vRn4Q1QjEqmByeffz/Hz/sTEtLPI6ViIpSSHHZJIzIh45a67dzez2QDuvr5yFy6RejPjL+/T7/GrmZ7cn8zDSrD09LBDEokpEU/nNLNkgpLMmFkBoOmcUm+WLIERP+jEb1PHsLmsE5ancgwikYo08d8DPAsUmtmtBPX4b4t6VCLV2LZ+J6NPWcGWzU7Lop2klmqjdJHaqFFXj5mZB/5hZjOBIYAB33D3uVWfU4exSgLzCuedXlfx189e4umCK2jeqpEGc0VqqaZ9/K+Z2dPAeHefB8wDMLNGZjYYuJigUNvf6iRKSXivjvwjQz77C/9OP5subbZgKerXF6mtmib+YcClwGNm1gbYQFCyIRmYBPzO3d+riwBFZt31Osc9fQ1TU44jq10xaDBX5JDUKPFX7ql7H3CfmaUC+cB2d99Qh7GJsGz6UkqvP4cl1prtZYeTosFckUNWo8FdM+trZgbg7rvdfYWSvtS1bdvggisyecOOY27RcSS3aB52SCJxoaazei4GZprZ42b2LTMrrsugRLzCuXL0Lt74MIfPCvqQqY3SRaKmpl09/wdgZh2Bk4G/mVlTggHdF4Gp7l5eZ1FKwply9r1c9ew/yM75LseUrYIUVdwUiZaI5vG7+zx3/527DwMGE8zjPwd4uy6Ck8Q0+3eT6f/s9exMyeSM5m+rzLJIlNVqtwozywR2uPvzwPPRDUkS2bJpS2h5wzkssrbsLGtHar4Gc0WiraaDu0lmdr6ZPWdmq4FPgJVm9pGZ3Wlm7es2TEkE29dtZ/MJZ5Dqu5hbeBwpGswVqRM17ep5DWgH3AgUu3upuxcAA4C3gLFmNqqOYpQE4A43fnsNvn07Lzc7iyaHFWswV6SO1LSr5wR3373/ne6+DngaeLpyfr9IrdxzD9z9bBlbc3/BBe3eBu2ZK1JnatTi35v0zeyuvfP5D/QckUi9d9dksq67lMFNZ3B+yWQN5orUsUirc24BJlQO7mJmJ5rZ1EgOYGYtzew1M5tbOUZwTYQxSBxZPm0xpdefw3G8yZicP2MazBWpc5HuuXuTmZ0PTDazncBWYEyE77kHuMHdZ5lZFsHCsJfd/eMIjyMxbvu67WwaeibNKwdzm7TUYK5IfYh0z90hwGUECb8A+J67vxHJMSrLPcyqvL4ZmAu0iOQYEvu8wpnV63I6bJvNpGbn0KS9BnNF6kukXT0/Bn7i7oOAs4EnKssy14qZtQaOZr8FYGZ2uZnNMLMZa9asqe3hpQF75OeLOGLBvxmffh4F7XMxDeaK1JtIV+4Odvc3K69/QFC+4Ze1eWMza0IwI+had9+03/vc7+493b1nQUFBbQ4vDdiUKTD6l625JPspmrXJ0WCuSD2r6QKuA83kWUGwG9cBn3OA46USJP1/uPszNX2dxL7Ppy/mxRH30DxtHZfnP4sV5IcdkkjCqc0OXEv23mlmjYC+ZlbjHbgqvyAeAua6+28jD1li1fZ129l4wpmM2TafXiXzSGuhszmRMNS0q2cYUE6wA9cKM/vYzBYC/wXOI9iB6281PFY/4EJgsJm9V3kZHmngElu8wpm9dzC36TnktM3VYK5ISOp9B67KMQL9xSeY18+6m4ELHuWZ9PMpODxXK3NFQhTRX5+ZpQFXAf0BN7M3gD9VfjGIVOv1x5bT518/5PXU42nWNleDuSIhi3Q65yPAEcC9wO+BzsDfox2UxI/58+Eb32nOpWmPsbPlYSRpZa5I6CI93+7g7l2r3H7NzOZEMyCJH5uWb+bWIe9Qvq0/pxVOI6VFSdghiQiRJ/7ZZtbH3d8CMLPeQES1eiQxVOypYG6PUfxp1YsMKLiWwrJ0DeaKNBCRJv7ewEVmtndKZxkw18w+ANzdu0Q1OolZUwb+lONXTeCZzFG0bWuQkhx2SCJSKdLEP6xOopC4Mu2aJzh+2q281PhUctrlQlpa2CGJSBWRJv7M/atomtkgd58cvZAkln3474V0u+cSZiX3IqVVCZaTE3ZIIrKfSGf1jDOzH1og3czuBX5VF4FJ7Fm1CoZf1Yqfpd7G6uZdSC7RYK5IQxRp4u8NtASmAe8CnxOsxJUEt2vzTr43fD6rVzodC76gcWvV1hdpqCLt6tkNbAfSgTRgobtXRD0qiSle4bzb80r+/Okz9MwbQ5tWjiVF2qYQkfoS6V/nuwSJvxfB6t3zzOypqEclMeWNc+6h36d/ZXLayfRqsxZrlBp2SCJyEJG2+Ee7+4zK6yuB083swijHJDHk3Vsn0e+Z63k9ZTBN2+ZBZmbYIYnI14i0xT/TzEaZ2U8BzKwM+CT6YUks+HTipxx+0zn8N6kDu1q1U219kRgRaeK/D+hLUIoZYDPwh6hGJDFh9WoY8Z0yHk++gAUlfUlurhk8IrEi4pW77t7dzGYDuPv6ys1YJIHs2LCDC0dsZ8mKbJKL8sloC6gcg0jMiHhWj5klAw5gZgWAZvUkEK9wZnW7lLsXz+JfBd+mXas9kKTvfpFYEmlXzz3As0Chmd0KvAncFvWopMF6/YSfc+zix5ib0YPerVZhjZT0RWJNRC1+d/+Hmc0k2GDdgG+4+9w6iUwanOnfe4yBr/2MSY1OIadtrmbwiMSoiPe/c/d5wLw6iEUasI8eeouj772EGcnHkFxWCnnaUEUkVml5pXythQvh3DGteDF5BF+06EJyi+KwQxKRQ1CrxG9mZWamaRwJYN2iTZx28i4Wb85lS8lhNG6lGjwisS7irh4zSwfeBroBq6IdkDQcOzbuZHG307h1Y1OWFvegRatU7aIlEgcibvG7+3Z3L3F3Jf04VrGngplHfYujN05hd1YOR7TejmkXLZG4oD5+qdbrx46h39LHeTbjfHI7FEDjxmGHJCJREnFXj8S/Kd+8j0Hv3skLjb9BzmH5mrYpEmfU4pcvGT8ebniyNxManU3jNsWgrRNF4s7XtvjNbPjeq8C3gQfc/fk6jUpCMev5lZx3XhGts4pIKyokqagg7JBEpA7UpKvn58ATwGogA1Dt3Tj02Quf0mrEsYxJvZZuhatJLdZ/s0i8qklXz3FAE2AH8JG7P1K3IUl9+/ydZTQ+dSgVnkT3vMVkleVo2qZIHPvaxO/u29z9ZuALYGvdhyT1ae0nX7BtwIlkl69nev6pNDmsRElfJM7VeHDX3V8BsrRiN35s3lDO5z1GULprAa/knk1WhxLQJukicS/Sv/LNwAQzywQwsxPNbGokBzCzv5jZajP7MML3lijauRPOPCeZsdu+x3NNzyenQzGWotm9IokgosTv7j8BHgMmm9mbwA3AmAjf82/AsAhfI1FUvqucn46YxX/+A20KtgQLtFRXXyRhRNTEM7MhwGUEff0lwGh3j2izdXd/3cxaR/IaiR6vcKZ3/T9+Me9hMnLuYGDZckjXAi2RRBJpV8+PgZ+4+yDgbOAJMxsc9aikTniF81qv/0f/eQ/yfPqZDGyzRKtyRRJQpDtwDa5y/QMzOxl4Gjg2mkGZ2eXA5QBlZWXRPHTC8gpncv+bGDzrN7zQ+HSatS+CrOywwxKREBzSFA53X0GwDWNUufv97t7T3XsWFGj1aDQ8dtELHD/9Nl5sfCpph5WqFINIAjvkaRzuvj0agUjdueMO+OE/TmZJ5s/p3Wollq9VuSKJrN4nbZvZY8B0oIOZLTOz0fUdQyJ55dwHuP+H8xmcM5tjylZiOoMSSXj1PnHb3c+r7/dMVFNG/oEhT17NnY1Gkl2cT1Khkr6IqCxz3Jp8xt0MfPJq3kgZRHbbXJKV9EWkkpZqxqHJw+9g0As/5PXUwexp157koqKwQxKRBkQt/jjzq5/vJvWF8byaehJ72rYnqag47JBEpIFR4o8TXuH84qad/OjmVG5vdhverg1JxUr6IvJV6uqJA17hTOn9A/rPmMHpzW7mey2eIilf3TsiUj21+GPcnh17eKPjZQya8Wu2N27GNS2eJknz9EXkINTij2E71m/nvc7nc9zKfzE+/VyyDyvAcnPDDktEGjgl/hi1cSO80/HbDFk9nqcyLyK/Q55q74hIjSjxx6CVK2H4cGf3mh9xU3Y6RR1yISMj7LBEJEaojz/G/HfCXP7Z8RbmfrCHiwtfoLBTgZK+iERELf4YMuuO/9D2h2dzAY0pLlpP83aZkNo47LBEJMYo8ceINy9+gD6PXMlnSYfzWXFfmrfL1sboIlIrSvwNXHk5TB54M0Om/pxpKQPYUtqR9JYlkGRhhyYiMUqJvwHbsAEuuACSpvZke+MzyWhTSCPV3RGRQ6S+ggZq/oSPubXDw0x6sYL2+evJ7FhGkpK+iESBWvwN0Fv/7ymO/PW3uI6mtC+eT/tWu7G0pmGHJSJxQom/Adm9fQ9vHn8Tx799O+8ld2d5cXfatwZLSQs7NBGJI0r8DcSi+XtY330wx29+gxcanU5KWTEZJUWYBnFFJMqU+BuAZ56B0aOTuXLbKSzIakte+zzIygo7LBGJU0r8Idqyaiuzjr+BP809k6LsI+jafA15ZaWQov8WEak7yjAhmX3PG+TccAnH7fmMS9J3UdA8neSCfM3PF5E6p+mc9Wzbmq1M6XYNXa8ZCOXl/Cv3UkqOzCelqED9+SJSL9Tir0cvvwwvXvgMv1l1D883PoPGLfJo2qK5WvkiUq+U+OvBypnL+ct1H/DjN4bRIuMUeuZdTXGbNCwzM+zQRCQBKfHXoV1bdzP9/HvpPuFmRpPBotx7OTt/Mqnq1hGRECnx1wGvcKbf8BTNf/8jBu6Zz5spA1lfeDjntZyNpRWGHZ6IJDgN7kbZlClwUZf3OPaukeysSOHpZpewu3M3sto3x9JUO19EwqcWfxR4hTPrzld46/45XL3gBvLT2/Ng0+toW7yN3EKtvhWRhkWJ/xCU7ypnxk8n0OT3v6LH1ncpsDIW5OZwUt5MUovzsCRtfi4iDY8Sfy2sXg2TfjyFgX+9mN7li1lkrXmqycXkFDXm1OaLIKkg7BBFRA5Iib+Gdm7ayeyxL/Hvtwr49dQ+lOxqxRPJLXi76WBym6eRl6+ZOiISG5T4D2LbF9v48PeT2fn4sxz16VP08Q0sSTqXU7O2cnrxq2zP70O+iqmJSIwJJfGb2TDgbiAZeNDdx4YRx/52b9vNvOcX8MqyDrz0EvzypeM4xmeyhUzeSh3AhialFBQm8Z38KVhKI6BR2CGLiESs3hO/mSUDfwCGAsuAd81sgrt/XF8xVFQE/fRLX/qYbZPewD+aS87CWbTfNIO2GEezkZL0jfwn/TQWpR1Ns9wkkgvyyG+kRC8isS+MFv8xwHx3XwBgZo8DpwNRTfzLl8OjF7/McZ/cT/LuHaTs3k7ajg0027GSY3iH5RXN+QlP8XNuZguZfJbUntcaDWNHejPGNbuB3BzDs7KxpBbRDEtEJHRhJP4WwNIqt5cBvas+wcwuBy4HKCsrq9Wb7NwJS2auIn/j++yyRuyiMRuTMliWejRnNJlMcopRUrGHF+1CmqTuxJKM7MYZZJsBW2ArsHVzrd5bEoPt2cqapMNZuvTrnysSqfJyyK6jGeFhJP7qpr74l2643w/cD9CzZ0+v5vlfq21b+P3aC1g5cxAAKemppGY2wpKTqnzLDK/NoUX+p2N6OqeqB1DqSF31LoeR+JcBLavcLgU+r4s3siSjpFdpXRxaRCRmhVGr512gvZm1MbNGwLnAhBDiEBFJSPXe4nf3PWZ2NfASwXTOv7j7R/Udh4hIogplHr+7Pw88H8Z7i4gkOpVlFhFJMEr8IiIJRolfRCTBKPGLiCQYc6/V+qh6Y2ZrgMWHcIh84IsohRPL9Dnso89iH30W+8TbZ9HK3avdHKTBJ/5DZWYz3L1n2HGETZ/DPvos9tFnsU8ifRbq6hERSTBK/CIiCSYREv/9YQfQQOhz2EefxT76LPZJmM8i7vv4RUTkyxKhxS8iIlUo8YuIJJi4TfxmNszMPjGz+WY2Jux4wmJmfzGz1Wb2YdixhM3MWprZa2Y218w+MrNrwo4pDGaWZmbvmNmcys/hlrBjCpuZJZvZbDObGHYs9SEuE3+VDd1PBjoD55lZ53CjCs3fgGFhB9FA7AFucPdOQB/gOwn6e7ETGOzuXYFuwDAz6xNuSKG7BpgbdhD1JS4TP1U2dHf3XcDeDd0Tjru/DqwLO46GwN1XuPusyuubCf7QW4QbVf3zwJbKm6mVl4Sd5WFmpcApwINhx1Jf4jXxV7ehe8L9gcuBmVlr4Gjg7ZBDCUVl18Z7wGrgZXdPyM+h0l3AD4CKkOOoN/Ga+L92Q3dJXGbWBHgauNbdN4UdTxjcvdzduxHseX2MmR0ZckihMLMRwGp3nxl2LPUpXhN/vW3oLrHFzFIJkv4/3P2ZsOMJm7tvACaTuONA/YDTzGwRQZfwYDN7NNyQ6l68Jn5t6C5fYWYGPATMdfffhh1PWMyswMyaVV5PB04A5oUaVEjc/UZ3L3X31gR54lV3HxVyWHUuLhO/u+8B9m7oPhcYl6gbupvZY8B0oIOZLTOz0WHHFKJ+wIUErbr3Ki/Dww4qBCXAa2b2PkEj6WV3T4hpjBJQyQYRkQQTly1+ERE5MCV+EZEEo8QvIpJglPhFRBKMEr+ISIJR4hcRSTBK/BJXzOwEM/t72HEAmNmfzaxf5fWI4jKzy6qsNaiocj1hF55J9KSEHYBIlHUFZocdRKXewFWV1yOKy90fAB4wsxbAtMq6OiJRoRa/xJuuQLGZvWFmK83shIM92cx6mNlrVW4faWbTDzUIM+sEfOru5VXimm1mjc3sb2Z2W2UJia9zJPDBocYjUpUSv8SbrsAX7j6AoLV9QdUHzSxjv4Q7Fzi8yu2fAz+JQhwnAy/uF9dqgjIi/3H3H3nlsvlqYqrqKCDhd0+T6FLil7hRWXkzF/h15V0pwIb9nrYAaLX3hrtvA3aYWTMz6w7kuPt/ohDOSVQm/sq4WgOPATe6+/7VH78U037U4peoU+KXeNIZmOPuezfU6MJXW8tH8+VNegA+BjoCvwBuAjCzYjObYmY/MLOHzewKM3tqb916M7vZzO42s1sqq13+1cxKK/c4bgo0c/e9pcA7ExRD2wOU81XVxbSXWvwSdUr8Ek+6AnOq3O4CvF/1CZXbL+6ffD8CLiEoWji18r6jgWfc/Q6gKfAA8CTQqnLANZXgbKKPu68BlgC/Ab4H9Adeq3L8rsA0grK/fzWzohrEhJklAe1J0JLJUneU+CWedOXLif5IatZa/gi4jC/37XcDXqrspllbeRaxt9vlF8DtwMPA8sodvdoCeyr3sq2uf/9Dd/8U+CEwrvK4X+cwYJm776zBc0VqTGWZRaphZg8RfBl0AU5w91+b2d/d/UIzuwHIBvKATwjODm4BRhJ06fwW6O3uu8OJXuTglPhFRBKMunpERBKMEr+ISIJR4hcRSTBK/CIiCUaJX0QkwSjxi4gkGCV+EZEEo8QvIpJglPhFRBLM/wdKPKUvgKFG9wAAAABJRU5ErkJggg==
+"
+class="
+jp-needs-light-background
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Berechnen Sie die molare isochore Wärmekapazität von Diamant bei $T=300~K$ im Rahmen des Einstein-Modells. Schätzen
+Sie hierfür die charakteristische Frequenz aus der typischen Wellenzahl von C-C-Einfachbindungen (aus der IR-
+Spektroskopie) ab. Vergleichen Sie den erhaltenen Wert mit experimentellen Daten ($5.6~J~K^{−1}~mol^{−1}$).</p>
+<p>Die IR-Wellenzahl für die CC-Einfachbindung liegt bei ungefähr $\tilde{\nu}= 1000$ cm$^{−1}$ (800 bis 1200 cm$^{−1}$). Daraus folgt eine Frequenz von $\nu = c \cdot \tilde{\nu} = 3 \cdot 10^{13}$ s$^{−1}$ ($2.4 − 3.6 \cdot 10^{13}$ s$^{−1}$).</p>
+
+</div>
+</div>
+</div>
+</div></section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[72]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">v_max1</span> <span class="o">=</span> <span class="mf">2.4</span> <span class="o">*</span> <span class="mf">1e13</span>
+<span class="n">v_max2</span> <span class="o">=</span> <span class="mf">3.6</span> <span class="o">*</span> <span class="mf">1e13</span> 
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">Omega1</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">v_max1</span> <span class="o">/</span> <span class="n">k</span>
+<span class="n">Omega2</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">v_max2</span> <span class="o">/</span> <span class="n">k</span>
+
+<span class="n">C_V1</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">Omega1</span><span class="o">/</span><span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">Omega1</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">Omega1</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">C_V2</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="n">Omega2</span><span class="o">/</span><span class="n">T</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">Omega2</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">Omega2</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;Die isochrome molare Wärmekapazität nach Einstein beträgt</span>
+<span class="si">{:.4f}</span><span class="s2"> - </span><span class="si">{:.4f}</span><span class="s2"> J/(K * mol) bei 300 K.</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">C_V1</span><span class="p">,</span> <span class="n">C_V2</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Die isochrome molare Wärmekapazität nach Einstein beträgt
+8.2592 - 2.6258 J/(K * mol) bei 300 K.
+
 </pre>
 </div>
 </div>
@@ -15771,7 +15586,7 @@ require(
             controls: true,
             progress: true,
             history: true,
-            transition: "slide",
+            transition: "none",
             slideNumber: "",
             plugins: [RevealNotes]
         });
